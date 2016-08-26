@@ -1,0 +1,42 @@
+{
+  "name": "keystone-metrics",
+  "version": "0.1.0",
+  "description": "Keystone Metrics",
+  "main": "dist/index.js",
+  "dependencies": {
+    "lodash": "^4.15.0",
+    "request": "^2.74.0",
+    "xhr2": "^0.1.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb-base": "^5.0.3",
+    "eslint-plugin-import": "^1.14.0"
+  },
+  "peerDependencies": {
+    "keystone": "^4.0.0-beta.1 || ^4.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint src",
+    "build": "babel src --out-dir dist",
+    "prepublish": "npm run lint && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/keystonejs/keystone-metrics.git"
+  },
+  "keywords": [
+    "Keystone",
+    "Metrics"
+  ],
+  "author": "Max Stoiber <contact@mxstbr.com> (http://mxstbr.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/keystonejs/keystone-metrics/issues"
+  },
+  "homepage": "https://github.com/keystonejs/keystone-metrics#readme"
+}
