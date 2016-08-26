@@ -21,23 +21,27 @@ const NOOP = () => {};
 // FIXME These should do the right thing, not be hardcoded
 const shouldReport = () => true;
 const getUserId = () => 'asdf1234';
+const getAppName = () => 'asdf1234';
 
-export default class MetricsReporter {
+module.exports = class MetricsReporter {
   // Default parameters passed with each request
   static defaultParams() {
     const memUse = process.memoryUsage();
     const memUseInMb = memUse.heapUsed >> 20;
     const memUseInPercentage = Math.round((memUse.heapUsed / memUse.heapTotal) * 100);
     return {
-      v: 1,                         // required; Google Analytics Version
-      tid: 'UA-43979816-2',         // required; Google Analytics ID
-      cid: getUserId(),             // required; Pass in random user ID
-      aip: 1,                       // Anonymize IP adresses
-      an: 'Keystone',
-      av: keystone.version,         // Keystone version
-      aiid: keystone._options.env,  // Environment ("development" or "production")
-      cm1: memUseInMb,              // Memory usage in MB
-      cm2: memUseInPercentage,      // Memory usage in %
+      v: 1,                        // required; Google Analytics Version
+      tid: 'UA-43979816-2',        // required; Google Analytics ID
+      cid: getUserId(),            // required; User ID (hashed MAC adress)
+      aip: 1,                      // Anonymize IP adresses
+      an: getAppName(),            // Hashed object of all options
+      av: keystone.version,        // Keystone version
+      aiid: keystone._options.env, // Environment ("development" or "production")
+      // Custom variables
+      cm1: process.version,        // Node.js version
+      cm2: process.platform,       // Operating system platform
+      cm3: memUseInMb,             // Memory usage in MB
+      cm4: memUseInPercentage,     // Memory usage in %
     };
   }
 
@@ -127,4 +131,4 @@ export default class MetricsReporter {
       }
     });
   }
-}
+};

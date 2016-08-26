@@ -1,6 +1,6 @@
 const dns = require('dns');
 
-export default function checkConnection(cb) {
+module.exports = function checkConnection(cb) {
   dns.lookup('google.com', (err) => {
     if (err && err.code === 'ENOTFOUND') {
       cb(false);
@@ -8,4 +8,4 @@ export default function checkConnection(cb) {
       cb(true);
     }
   });
-}
+};
