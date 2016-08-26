@@ -4,7 +4,9 @@
   "description": "Keystone Metrics",
   "main": "dist/index.js",
   "dependencies": {
+    "getmac": "^1.2.1",
     "lodash": "^4.15.0",
+    "node-uuid": "^1.4.7",
     "request": "^2.74.0",
     "xhr2": "^0.1.3"
   },
