@@ -33,7 +33,10 @@
     "Keystone",
     "Metrics"
   ],
-  "author": "Max Stoiber <contact@mxstbr.com> (http://mxstbr.com)",
+  "contributors": [
+    "Max Stoiber <contact@mxstbr.com> (http://mxstbr.com)",
+    "Jed Watson"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/keystonejs/keystone-metrics/issues"
