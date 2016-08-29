@@ -16,15 +16,29 @@ import keystone from 'keystone';
 
 import checkConnection from './utils/check-connection';
 import createUserId from './utils/create-user-id';
+import sanitize from './sanitize';
 
 const NOOP = () => {};
 let USER_ID;
+const OPTIONS = {};
 
 // FIXME These should do the right thing, not be hardcoded
 const shouldReport = () => true;
 const getAppName = () => 'asdf1234';
 
 module.exports = class MetricsReporter {
+  static sanitize(option) {
+    return sanitize(option);
+  }
+
+  static setOption(key, value) {
+    OPTIONS[key] = value;
+  }
+
+  static sendOptions() {
+    console.log('sendOptions', querystring.stringify({ options: JSON.stringify(OPTIONS) }));
+  }
+
   // Default parameters passed with each request
   static defaultParams(userID) {
     const memUse = process.memoryUsage();
